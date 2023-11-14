@@ -1,54 +1,47 @@
-import * as React from 'react';
-import { AppBar, Avatar, Box, Button, Container, IconButton, Menu, Toolbar, Tooltip, Typography } from '@mui/material';
-import AdbIcon from '@mui/icons-material/Adb';
-import MenuIcon from '@mui/icons-material/Menu';
-import MenuItem from '@mui/material/MenuItem';
+import * as React from "react";
+import {
+  AppBar,
+  Avatar,
+  Box,
+  Container,
+  IconButton,
+  Menu,
+  Toolbar,
+  Tooltip,
+  Typography,
+} from "@mui/material";
+
+import MenuIcon from "@mui/icons-material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import logo from "../../assets/images/advance-tours-logo.jpg";
+import { Link } from "react-router-dom";
 
 
-const pages = ['Products', 'Pricing', 'Blog'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
-
+const settings = ["Profile", "Account", "Dashboard", "Logout"]; 
 
 const Header = () => {
-    const [anchorElNav, setAnchorElNav] = React.useState(null);
-    const [anchorElUser, setAnchorElUser] = React.useState(null);
-  
-    const handleOpenNavMenu = (event) => {
-      setAnchorElNav(event.currentTarget);
-    };
-    const handleOpenUserMenu = (event) => {
-      setAnchorElUser(event.currentTarget);
-    };
-  
-    const handleCloseNavMenu = () => {
-      setAnchorElNav(null);
-    };
-  
-    const handleCloseUserMenu = () => {
-      setAnchorElUser(null);
-    };
+  const [anchorElNav, setAnchorElNav] = React.useState(null);
+  const [anchorElUser, setAnchorElUser] = React.useState(null);
+
+  const handleOpenNavMenu = (event) => {
+    setAnchorElNav(event.currentTarget);
+  };
+  const handleOpenUserMenu = (event) => {
+    setAnchorElUser(event.currentTarget);
+  };
+
+  const handleCloseNavMenu = () => {
+    setAnchorElNav(null);
+  };
+
+  const handleCloseUserMenu = () => {
+    setAnchorElUser(null);
+  };
   return (
-    <AppBar position="static">
+    <AppBar sx={{ bgcolor: "#430f6400", boxShadow: 0 }} position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="#app-bar-with-responsive-menu"
-            sx={{
-              mr: 2,
-              display: { xs: "none", md: "flex" },
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            LOGO
-          </Typography>
+          <Avatar src={logo} alt="" />
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
@@ -57,7 +50,7 @@ const Header = () => {
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
-              color="inherit"
+              color="#000"
             >
               <MenuIcon />
             </IconButton>
@@ -79,14 +72,30 @@ const Header = () => {
                 display: { xs: "block", md: "none" },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
-              ))}
+              <MenuItem
+                sx={{ mx: 'auto', color: "#000", display: "block" }}
+                component={Link}
+                to={"/offers"}
+              >
+                Offers
+              </MenuItem>
+              <MenuItem
+                sx={{  mx: 'auto', color: "#000", display: "block" }}
+                component={Link}
+                to={"/login"}
+              >
+                Login
+              </MenuItem>
+              <MenuItem
+                sx={{  mx: 'auto', color: "#000", display: "block" }}
+                component={Link}
+                to={"/signin"}
+              >
+                Signin
+              </MenuItem>
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
+
           <Typography
             variant="h5"
             noWrap
@@ -94,27 +103,59 @@ const Header = () => {
             href="#app-bar-with-responsive-menu"
             sx={{
               mr: 2,
-              display: { xs: "flex", md: "none" },
+              display: { xs: "none", sm: "flex", md: "none" },
               flexGrow: 1,
-              fontFamily: "monospace",
+              fontFamily: "roboto",
               fontWeight: 700,
               letterSpacing: ".3rem",
-              color: "inherit",
+
+              color: "#000",
               textDecoration: "none",
             }}
           >
-            LOGO
+            ADVANCE TOURS & TRAVELS
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "white", display: "block" }}
-              >
-                {page}
-              </Button>
-            ))}
+          <Typography
+            variant="subtitle1"
+            noWrap
+            component="a"
+            href="#app-bar-with-responsive-menu"
+            sx={{
+              mr: 2,
+              display: { xs: "flex", sm: "none", md: "none" },
+              flexGrow: 1,
+              fontFamily: "roboto",
+              fontWeight: 500,
+              letterSpacing: ".1rem",
+
+              color: "#000",
+              textDecoration: "none",
+            }}
+          >
+            ADVANCE TOURS
+          </Typography>
+          <Box sx={{ mx: "auto", display: { xs: "none", md: "flex" } }}>
+            <MenuItem
+              sx={{ my: 2, color: "#000", display: "block" }}
+              component={Link}
+              to={"/offers"}
+            >
+              Offers
+            </MenuItem>
+            <MenuItem
+              sx={{ my: 2, color: "#000", display: "block" }}
+              component={Link}
+              to={"/login"}
+            >
+              Login
+            </MenuItem>
+            <MenuItem
+              sx={{ my: 2, color: "#000", display: "block" }}
+              component={Link}
+              to={"/signin"}
+            >
+              Signin
+            </MenuItem>
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
